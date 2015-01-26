@@ -1,0 +1,33 @@
+{
+  "name": "TreeQL",
+  "version": "1.0.0",
+  "description": "JSON query and mutation library. It traverses a tree structure in post-order (leaves first, root last), across objects and arrays, returning the nodes which match the partial structure passed in the query, as well as allowing you to mutate or replace matched nodes.",
+  "homepage": "https://github.com/idevelop/treeql",
+  "main": "treeql.js",
+  "author": {
+    "name": "Andrei Gheorghe",
+    "email": "andreig@gmail.com",
+    "url": "http://idevelop.github.com/"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "treeql.js",
+    "spec",
+    "package.json"
+  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://github.com/idevelop/treeql/raw/master/LICENSE"
+  }],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idevelop/treeql.git"
+  },
+  "devDependencies" : {
+    "jasmine": "latest"
+  },
+  "scripts": {
+    "test": "jasmine"
+  }
+}
