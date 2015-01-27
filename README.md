@@ -147,6 +147,25 @@ treeql.query(data, query, function(node) {
 });
 ```
 
+Here's how you can sum up a nested tree of number arrays.
+
+```javascript
+var data = [1, 2, 3, [4, 5, [6]]];
+
+var query = []; // Match any array
+
+treeql.query(data, query, function(array) {
+  var sum = 0;
+  array.map(function(value) {
+    sum += value;
+  });
+
+  return sum;
+}, function(result) {
+  // result = 21
+});
+```
+
 ## Author
 
 **Andrei Gheorghe**
