@@ -43,7 +43,7 @@ describe("selecting", function() {
       name: "Andrei"
     }, {
       differentProperty: 10
-    }]
+    }];
 
     // Match objects with "name" property
     var query = {
@@ -68,10 +68,10 @@ describe("selecting", function() {
     }];
 
     treeql.query(data, {
-      age: function(age) { return age < 50 }
+      age: function(age) { return age < 50; }
     }, null, function(resultTree, matchesCount) {
       expect(matchesCount).toEqual(2);
-    })
+    });
   });
 
   it("should find simple object", function() {
@@ -196,6 +196,16 @@ describe("replacing", function() {
     });
   });
 
+  it("should replace simple value", function() {
+    treeql.query({
+      name: "Andrei"
+    }, "Andrei", function() {
+      return "Homer";
+    }, function(result) {
+      expect(result.name).toEqual("Homer");
+    });
+  });
+
   it("should replace simple node", function() {
     var tree = [{
       name: "Andrei",
@@ -211,7 +221,7 @@ describe("replacing", function() {
       return {
         name: "Andrei Gheorghe",
         age: 28.5
-      }
+      };
     }, function(resultTree, matchesCount) {
       expect(resultTree.length).toEqual(2);
 
@@ -237,4 +247,4 @@ describe("replacing", function() {
       expect(resultTree).toEqual(21);
     });
   });
-})
+});
