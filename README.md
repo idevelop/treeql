@@ -77,9 +77,9 @@ treeql.query(data, {
 });
 ```
 
-### Variable selection
+### Variables
 
-It supports variable definition in the query to ensure it matches the same value across different parts of the `query` object.
+The library supports variable definition in the query to ensure it matches the same value across different parts of the `query` object.
 
 ```javascript
 var $ = treeql.variable;
@@ -165,6 +165,8 @@ treeql.query(data, query, function(array) {
   // result = 21
 });
 ```
+
+You can find a couple more examples in the `treeSpec.js` unit test suite.
 
 ## Author
 
