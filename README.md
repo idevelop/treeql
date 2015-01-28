@@ -106,7 +106,7 @@ var query = {
 
 treeql.query(tree, query, function(node, variables) {
   // node = { "name": "Andrei", ... }
-  // variables = { "preferred_os": "MacOS" }
+  // variables = { "operating_system": "MacOS" }
 });
 ```
 
