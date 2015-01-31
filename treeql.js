@@ -11,7 +11,7 @@ function isVariableNode(node) {
 function treeMatch(tree, query, variables) {
 	if (query === undefined) {
 		return true;
-	};
+	}
 
 	if (typeof query === "function") {
 		try {
@@ -47,12 +47,30 @@ function treeMatch(tree, query, variables) {
 		return tree === query;
 	}
 
-	for (var key in query) {
-		if (!tree.hasOwnProperty(key)) {
-			return false;
-		} else {
-			if (!treeMatch(tree[key], query[key], variables)) {
+	if (Array.isArray(query)) {
+		// Comparing two arrays, each element in the query array must match at least one element in the tree array
+		for (var i = 0; i < query.length; i++) {
+			var foundMatch = false;
+			for (var j = 0; j < tree.length; j++) {
+				if (treeMatch(tree[j], query[i], variables)) {
+					foundMatch = true;
+					break;
+				}
+			}
+
+			if (!foundMatch) {
 				return false;
+			}
+		}
+	} else {
+		// Comparing two objects, all query keys should be included in object keys
+		for (var key in query) {
+			if (!tree.hasOwnProperty(key)) {
+				return false;
+			} else {
+				if (!treeMatch(tree[key], query[key], variables)) {
+					return false;
+				}
 			}
 		}
 	}
@@ -88,7 +106,7 @@ function findMatches(tree, query, callback) {
 	return {
 		matches: matches,
 		tree: tree
-	}
+	};
 }
 
 exports.query = function(tree, query, nodeCallback, completeCallback) {

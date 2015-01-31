@@ -74,6 +74,26 @@ describe("selecting", function() {
     });
   });
 
+  it("should match partial array definition with index > 0", function() {
+    var data = {
+      properties: [{
+        type: 'a',
+        value: 4
+      }, {
+        type: 'b',
+        value: 5
+      }]
+    };
+
+    treeql.query(data, {
+      properties: [{
+        value: function(v) { return v == 5; }
+      }]
+    }, null, function(result, count) {
+      expect(count).toEqual(1);
+    });
+  });
+
   it("should find simple object", function() {
     var tree = {
       person: {
