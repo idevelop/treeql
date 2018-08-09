@@ -69,7 +69,7 @@ var data = {
 
 // Query for people aged under 50
 treeql.query(data, {
-  age: function(age) { return age < 50 }
+  age: x => x < 50
 }, function(node) {
   // this callback will be called twice:
   // 1: node = { name: "Andrei", age: 28 }
